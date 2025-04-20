@@ -33,8 +33,10 @@ services:
             - '../src/Tests/'
             - '../src/Infrastructure/Shared/Migrations'
 
-    App\Infrastructure\Post\Doctrine\:
-        resource: '../src/Infrastructure/Post/Doctrine/*Parser.php'
+    # This service definition is commented out because the directory doesn't exist yet
+    # Uncomment when the Post module is implemented
+    # App\Infrastructure\Post\Doctrine\:
+    #     resource: '../src/Infrastructure/Post/Doctrine/*Parser.php'
 
     App\Domain\Shared\:
         resource: '../src/Domain/Shared/'
