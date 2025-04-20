@@ -22,19 +22,17 @@ framework:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             # async: '%env(MESSENGER_TRANSPORT_DSN)%'
             # failed: 'doctrine://default?queue_name=failed'
-            # sync: 'sync://'
+            sync: 'sync://'
 
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
             
             # Command bus routing
-            'App\Infrastructure\Shared\Bus\Command\CommandInterface': 
-                senders: ['sync://']
+            'App\Infrastructure\Shared\Bus\Command\CommandInterface': sync
             
             # Query bus routing
-            'App\Infrastructure\Shared\Bus\Query\QueryInterface': 
-                senders: ['sync://']
+            'App\Infrastructure\Shared\Bus\Query\QueryInterface': sync
 
 # when@test:
 #    framework:
