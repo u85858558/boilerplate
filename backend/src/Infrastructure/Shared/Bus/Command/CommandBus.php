@@ -2,7 +2,12 @@
 
 namespace App\Infrastructure\Shared\Bus\Command;
 
-class CommandBus extends MessageHandlerInterface
+use App\Infrastructure\Shared\Bus\MessageBusExceptionTrait;
+use Symfony\Component\Messenger\Exception\ExceptionInterface;
+use Symfony\Component\Messenger\Exception\HandlerFailedException;
+use Symfony\Component\Messenger\MessageBusInterface;
+
+class CommandBus
 {
     use MessageBusExceptionTrait;
 
@@ -17,7 +22,8 @@ class CommandBus extends MessageHandlerInterface
      * @param CommandInterface $command
      *
      * @return void
-     * @throws Throwable
+     * @throws ExceptionInterface
+     * @throws \Throwable
      */
     public function handle(CommandInterface $command): void
     {
