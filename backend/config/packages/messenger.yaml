@@ -3,6 +3,18 @@ framework:
         # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
         # failure_transport: failed
 
+        # Define the buses for your application
+        buses:
+            messenger.bus.command:
+                middleware:
+                    - validation
+                    - doctrine_transaction
+            messenger.bus.query:
+                middleware:
+                    - validation
+            messenger.bus.event:
+                default_middleware: allow_no_handlers
+
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             # async: '%env(MESSENGER_TRANSPORT_DSN)%'
@@ -12,6 +24,14 @@ framework:
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
+            
+            # Command bus routing
+            'App\Infrastructure\Shared\Bus\Command\CommandInterface': 
+                senders: ['sync://']
+            
+            # Query bus routing
+            'App\Infrastructure\Shared\Bus\Query\QueryInterface': 
+                senders: ['sync://']
 
 # when@test:
 #    framework:
