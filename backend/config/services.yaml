@@ -25,7 +25,9 @@ services:
   App\:
     resource: '../src/'
     exclude:
-      - '../src/Domain/'
+      - '../src/Domain/User/User.php'
+      - '../src/Domain/User/ValueObject/'
+      - '../src/Domain/*/Exception/'
       - '../src/Application/**/*Command.php'
       - '../src/Application/**/*Response.php'
       - '../src/Infrastructure/**/Doctrine/'
@@ -38,8 +40,13 @@ services:
   # App\Infrastructure\Post\Doctrine\:
   #     resource: '../src/Infrastructure/Post/Doctrine/*Parser.php'
 
+  # Domain shared services
   App\Domain\Shared\:
     resource: '../src/Domain/Shared/'
+    
+  # Repository interfaces
+  App\Domain\User\Repository\:
+    resource: '../src/Domain/User/Repository/'
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
