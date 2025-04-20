@@ -44,20 +44,17 @@ services:
   App\Domain\Shared\:
     resource: '../src/Domain/Shared/'
     
-  # Repository interfaces
-  App\Domain\User\Repository\:
-    resource: '../src/Domain/User/Repository/'
-    
   # Alias the UserRepositoryInterface to a concrete implementation
   # Choose either DoctrineUserRepository or InFileUserRepository based on your preference
   App\Domain\User\Repository\UserRepositoryInterface: '@App\Infrastructure\Persistence\InFile\Repository\InFileUserRepository'
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
+  # Controllers
   App\UI\Http\Web\Controller\:
     resource: '../src/UI/Http/Web/Controller/'
-    tags: [ 'controller.service_arguments' ]
+    tags: ['controller.service_arguments']
 
   App\UI\Http\Rest\Controller\:
     resource: '../src/UI/Http/Rest/Controller/'
-    tags: [ 'controller.service_arguments' ]
+    tags: ['controller.service_arguments']
