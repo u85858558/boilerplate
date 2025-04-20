@@ -3,6 +3,9 @@ framework:
         # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
         # failure_transport: failed
 
+        # Define the default bus
+        default_bus: messenger.bus.command
+        
         # Define the buses for your application
         buses:
             messenger.bus.command:
